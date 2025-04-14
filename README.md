@@ -3,6 +3,16 @@
 Репозиторий курса по сжатию и ускорению моделей машинного обучения.
 ИТМО 2025, направление магистратуры Искуственный интеллект.
 
+### Таблица сравнения методов компрессии моделей
+| Модель | Метод | Размер весов | Время инференса (CPU, ms) | Время инференса (GPU, ms) | Использование RAM (MB) | Использование VRAM (MB) | Качество (PPL, BLEU, Accuracy) |
+| :---   | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| dslim/bert-large-NER | Оригинал | 1.33Gb   | 501.7ms | 31.6ms (Tesla T4) | 1.3 GB | 1.3 GB | 82.8% F1 |
+| dslim/bert-large-NER | Quantized fp16 | 665 MB   | 1531.0ms | 17.1 ms (Tesla T4) | 0.67 GB | 0.67 GB | 82.8% F1 |
+| dslim/bert-large-NER | Quantized int8 | 424 MB   | 199.9 ms | -- | 424 MB | 424 MB | 72.8% F1 |
+| dslim/bert-large-NER | Pruning (20%) | 1.33 GB   | -- | 17.5 ms (Tesla T4) | 1.3 GB | 1.3 GB | 83.2% F1 |
+| dslim/bert-large-NER | Clustering (128 clusters) | 464 MB (GZIP) | 501.7ms | 17.3ms (Tesla T4) | 1.3 GB | 1.3 GB | 82.96% F1 |
+| dslim/bert-base-NER (distilled) | Distillation | 431 MB | 160.5ms | 11.5ms (Tesla T4) | 431 MB | 431 MB | 86.96% F1 |
+
 ### Расписание
 
 📅 Среда – лекция
